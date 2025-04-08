@@ -55,11 +55,16 @@
 .register__sign-up-text {
   text-align: center;
   font-size: 14px;
-  cursor: pointer;
   margin-bottom: 85px;
 }
 
-.register__sign-up-text:hover {
+.register__sign-up-link {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+
+.register__sign-up-link:hover {
   opacity: 60%;
 }
 

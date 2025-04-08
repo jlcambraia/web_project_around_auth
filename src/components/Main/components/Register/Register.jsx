@@ -1,4 +1,5 @@
 import InfoTooltip from "./components/InfoTooltip";
+import { Link } from "react-router-dom";
 
 export default function Register({ onClosePopup }) {
   const infoTooltip = <InfoTooltip onClosePopup={onClosePopup} />;
@@ -20,7 +21,10 @@ export default function Register({ onClosePopup }) {
       </form>
       <button className="register__button">Inscrever-se</button>
       <p className="register__sign-up-text">
-        Já é um membro? Faça o login aqui!
+        Já é um membro?{" "}
+        <Link to="/signin" className="register__sign-up-link">
+          Faça o login aqui!
+        </Link>
       </p>
     </div>
   );
