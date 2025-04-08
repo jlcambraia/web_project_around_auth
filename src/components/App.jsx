@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import avatarPlaceholder from "../images/profile__placeholder.png";
 
@@ -12,6 +13,8 @@ import Login from "./Main/components/Login/Login";
 import { api } from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
+import ProtectedRoute from "./ProtectedRout";
+
 function App() {
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
@@ -22,6 +25,7 @@ function App() {
     about: "Carregando...",
   });
   const [saving, setSaving] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     api
@@ -133,24 +137,67 @@ function App() {
     <CurrentUserContext.Provider
       value={{ currentUser, handleUpdateUser, onUpdateAvatar, saving }}
     >
-      <div className="body">
-        <div className="page">
-          <Header />
-          <Main
-            onOpenPopup={handleOpenPopup}
-            onClosePopup={handleClosePopup}
-            popup={popup}
-            cards={cards}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
-            onAddPlaceSubmit={handleAddPlaceSubmit}
-            error={error}
-          />
-          {/* <Register onClosePopup={handleClosePopup} /> */}
-          {/* <Login /> */}
-          <Footer />
-        </div>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <div className="body">
+                <div className="page">
+                  <Header />
+                  <Main
+                    onOpenPopup={handleOpenPopup}
+                    onClosePopup={handleClosePopup}
+                    popup={popup}
+                    cards={cards}
+                    onCardLike={handleCardLike}
+                    onCardDelete={handleCardDelete}
+                    onAddPlaceSubmit={handleAddPlaceSubmit}
+                    error={error}
+                  />
+                  <Footer />
+                </div>
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <>
+              <div className="body">
+                <div className="page">
+                  <Header />
+                  <Login />
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <>
+              <div className="body">
+                <div className="page">
+                  <Header />
+                  <Register />
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Navigate to="/signin" replace />
+            )
+          }
+        />
+      </Routes>
     </CurrentUserContext.Provider>
   );
 }
