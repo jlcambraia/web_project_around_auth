@@ -12,6 +12,12 @@
 
 @import url(./blocks/grid.css);
 
+@import url(./blocks/register.css);
+
+@import url(./blocks/login.css);
+
+@import url(./blocks/infoTooltip.css);
+
 @import url(./blocks/popup.css);
 
 @import url(./blocks/footer.css);
