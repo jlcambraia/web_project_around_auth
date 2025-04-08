@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  base: "/web_project_around_react/",
+  base: "/web_project_around_auth/",
 });
