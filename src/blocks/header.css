@@ -1,5 +1,8 @@
 .header {
   border-bottom: solid 1px #545454;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__logo {
@@ -7,9 +10,26 @@
   margin-bottom: 41px;
 }
 
+.header__button {
+  margin: 0 0 32px 0;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+
+.header__button:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
 @media screen and (max-width: 544px) {
   .header__logo {
     max-width: 126px;
     margin-bottom: 32px;
+  }
+
+  .header__button {
+    margin-bottom: 24px;
+    font-size: 14px;
   }
 }
