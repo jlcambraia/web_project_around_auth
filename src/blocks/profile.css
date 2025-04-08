@@ -1,0 +1,158 @@
+.profile {
+  padding: 40px 0 50px;
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.profile__picture-container {
+  position: relative;
+}
+
+.profile__picture {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-right: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profile__picture:hover {
+  cursor: pointer;
+}
+
+.profile__icon {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profile__picture-container:hover .profile__picture {
+  opacity: 0.2;
+}
+
+.profile__picture-container:hover .profile__icon {
+  opacity: 1;
+}
+
+.profile__user-container {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 16px;
+  column-gap: 18px;
+}
+
+.profile__user-name {
+  margin: 0;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.profile__user-about {
+  margin: 0;
+}
+
+.profile__edit-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  max-width: 27px;
+  max-height: 26px;
+  margin-bottom: 5px;
+}
+
+.profile__edit-button-icon {
+  max-width: 10px;
+  max-height: 10px;
+  border: solid 1px #fff;
+  padding: 7px;
+}
+
+.profile__edit-button-icon:hover {
+  filter: opacity(0.6);
+  cursor: pointer;
+}
+
+.profile__add-button {
+  margin-left: auto;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  max-width: 160px;
+  max-height: 54px;
+}
+
+.profile__add-button-icon {
+  width: 22px;
+  height: 22px;
+  border: solid 2px #fff;
+  padding: 14px 64px;
+}
+
+.profile__add-button-icon:hover {
+  filter: opacity(0.6);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 544px) {
+  .profile {
+    padding: 42px 0 36px;
+    flex-direction: column;
+  }
+
+  .profile__picture {
+    margin: 0 0 30px;
+  }
+
+  .profile__icon {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .profile__user-container {
+    column-gap: 10px;
+  }
+
+  .profile__user-name {
+    font-size: 22px;
+  }
+
+  .profile__edit-button {
+    margin: 0;
+    line-height: 0.875;
+    max-height: 19.7px;
+    max-width: 19.5px;
+  }
+
+  .profile__edit-button-icon {
+    width: 7.5px;
+    height: 7.5px;
+    padding: 5.25px;
+  }
+
+  .profile__user-about {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .profile__add-button {
+    margin: 0;
+    max-width: 274px;
+    width: 100%;
+    line-height: 0;
+  }
+
+  .profile__add-button-icon {
+    height: 16px;
+    padding: 17px 0 17px;
+    width: 270px;
+  }
+}

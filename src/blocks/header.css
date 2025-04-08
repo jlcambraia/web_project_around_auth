@@ -1,0 +1,15 @@
+.header {
+  border-bottom: solid 1px #545454;
+}
+
+.header__logo {
+  max-width: 173px;
+  margin-bottom: 41px;
+}
+
+@media screen and (max-width: 544px) {
+  .header__logo {
+    max-width: 126px;
+    margin-bottom: 32px;
+  }
+}

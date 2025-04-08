@@ -1,0 +1,253 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.popup_type_error_message {
+  position: fixed;
+  top: 55%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.popup__card {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 34px 36px 36px;
+  position: relative;
+  max-width: 85%;
+  max-height: 85%;
+}
+
+.popup__card_type_forms {
+  width: 420px;
+}
+
+.popup__card_type_delete {
+  font-family: "Inter";
+  width: 320px;
+}
+
+.popup__card_type_image {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+.popup__image {
+  width: 100%;
+  max-height: 80vh;
+}
+
+.popup__caption {
+  margin: 10px 0 0;
+  font-size: 12px;
+}
+
+.popup__title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0 0 54px;
+}
+
+.popup__title_margin_small {
+  margin-bottom: 38px;
+}
+
+.popup__message {
+  color: #000;
+  margin: 0;
+}
+
+.popup__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup__input-wrapper {
+  position: relative;
+}
+
+.popup__input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+  padding: 13px 5px;
+  font-size: 14px;
+  color: #000;
+  width: 100%;
+}
+
+.popup__input::placeholder {
+  font-size: 14px;
+  color: #c4c4c4;
+}
+
+.popup__input_margin-large {
+  margin-bottom: 48px;
+}
+
+.popup__input_type_error {
+  border-bottom-color: #ff0000;
+}
+
+.popup__input-error {
+  font-size: 12px;
+  color: #ff0000;
+  position: absolute;
+  top: 65%;
+  left: 5px;
+  z-index: 1;
+}
+
+.popup__input-error_positioned-top {
+  font-size: 12px;
+  color: #ff0000;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  z-index: 1;
+}
+
+.popup__input-error_hidden {
+  display: none;
+}
+
+.popup__save-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 18px;
+  border-radius: 2px;
+}
+
+.popup__save-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.popup__save-button_disabled {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: not-allowed;
+}
+
+.popup__save-button_disabled:hover {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: not-allowed;
+}
+
+.popup__delete-confirmation-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 18px;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.popup__delete-confirmation-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.popup__delete-confirmation-button_disabled {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: not-allowed;
+}
+
+.popup__delete-confirmation-button_disabled:hover {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: not-allowed;
+}
+
+.popup__close-button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  padding: 0;
+  top: -35px;
+  right: -35px;
+}
+
+.popup__close-button:hover {
+  filter: opacity(0.6);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 544px) {
+  .popup__card {
+    width: 75%;
+    padding: 25px 22px;
+  }
+
+  .popup__card_type_image {
+    padding: 0;
+  }
+
+  .popup__card_type_delete {
+    width: 70%;
+  }
+
+  .popup__content {
+    width: 80%;
+  }
+
+  .popup__image {
+    max-width: 100%;
+  }
+
+  .popup__title {
+    font-size: 18px;
+    margin: 0 0 46px;
+  }
+
+  .popup__title_margin_small {
+    margin-bottom: 18px;
+  }
+
+  .popup__input {
+    padding: 9px 3px;
+  }
+
+  .popup__input_margin-large {
+    margin-bottom: 46px;
+  }
+
+  .popup__save-button {
+    padding: 14px;
+  }
+
+  .popup__close-button {
+    top: -45px;
+    right: 0;
+  }
+
+  .popup__close-button-icon {
+    width: 26px;
+    height: 26px;
+  }
+}

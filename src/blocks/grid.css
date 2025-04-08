@@ -1,0 +1,123 @@
+.grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid__card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 17px;
+  padding-bottom: 67px;
+}
+
+.grid__without-cards-text {
+  height: 47vh;
+}
+
+.grid__card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.grid__img {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 282px;
+  height: 282px;
+  box-sizing: border-box;
+  object-fit: cover;
+  object-position: center;
+}
+
+.grid__img:hover {
+  cursor: pointer;
+}
+
+.grid__card-footer {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 282px;
+  height: 79px;
+  padding: 0 15px 0 21px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.grid__card-title {
+  color: #000;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.grid__card-delete-button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.grid__card-delete-button:hover {
+  filter: opacity(0.6);
+}
+
+.grid__card-footer-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.grid__like-icon:hover {
+  filter: opacity(0.5);
+}
+
+.grid__like-icon_active {
+  background-image: url(../images/like__icon_active.svg);
+}
+
+@media screen and (max-width: 1024px) {
+  .grid__card-container {
+    grid-template-columns: repeat(2, 1fr);
+    justify-self: center;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .grid__card-container {
+    grid-template-columns: repeat(1, 1fr);
+    padding-bottom: 50px;
+    padding-left: 0;
+    justify-self: center;
+  }
+
+  .grid__card {
+    width: 270px;
+    justify-self: center;
+  }
+
+  .grid__img {
+    width: 100%;
+  }
+
+  .grid__card-footer {
+    width: 100%;
+  }
+
+  .grid__like-icon:hover {
+    filter: none;
+  }
+}
