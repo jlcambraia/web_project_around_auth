@@ -6,9 +6,8 @@ import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Footer from "./Footer/Footer";
 
-import Register from "./Main/components/Register";
-import Login from "./Main/components/Login";
-import InfoTooltip from "./Main/components/InfoTooltip";
+import Register from "./Main/components/Register/Register";
+import Login from "./Main/components/Login/Login";
 
 import { api } from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -147,9 +146,8 @@ function App() {
             onAddPlaceSubmit={handleAddPlaceSubmit}
             error={error}
           />
-          {/* <Register /> */}
+          {/* <Register onClosePopup={handleClosePopup} /> */}
           {/* <Login /> */}
-          {/* <InfoTooltip /> */}
           <Footer />
         </div>
       </div>
