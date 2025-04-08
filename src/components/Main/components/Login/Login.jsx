@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login() {
   return (
     <div className="login">
@@ -16,7 +18,10 @@ export default function Login() {
       </form>
       <button className="login__button">Entrar</button>
       <p className="login__sign-up-text">
-        Ainda não é membro? Inscreva-se aqui!
+        Ainda não é membro?{" "}
+        <Link to="/signup" className="login__sign-up-link">
+          Inscreva-se aqui!
+        </Link>
       </p>
     </div>
   );
