@@ -22,6 +22,15 @@
   opacity: 60%;
 }
 
+.header__button_profile {
+  margin-right: 56px;
+  font-weight: 500;
+}
+
+.header__button_logout {
+  color: #a9a9a9;
+}
+
 @media screen and (max-width: 544px) {
   .header__logo {
     max-width: 126px;
