@@ -77,10 +77,16 @@ function App() {
       return;
     }
 
-    auth.getUserInfo(token).then((data) => {
-      setIsLoggedIn(true);
-      setUserData(data);
-    });
+    auth
+      .getUserInfo(token)
+      .then((data) => {
+        setIsLoggedIn(true);
+        setUserData(data.data.email);
+        navigate("/");
+      })
+      .catch(() => {
+        setIsRegistered(false);
+      });
   }, []);
 
   function handleOpenPopup(popupData) {
