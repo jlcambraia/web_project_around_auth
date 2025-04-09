@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import avatarPlaceholder from "../images/profile__placeholder.png";
 
@@ -10,10 +10,16 @@ import Footer from "./Footer/Footer";
 import Register from "./Main/components/Register/Register";
 import Login from "./Main/components/Login/Login";
 
+import InfoTooltip from "./Main/components/Popup/components/InfoTooltip/InfoTooltip";
+
+import Popup from "./Main/components/Popup/Popup";
+
 import { api } from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import ProtectedRoute from "./ProtectedRout";
+
+import * as auth from "../utils/auth";
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -25,7 +31,11 @@ function App() {
     about: "Carregando...",
   });
   const [saving, setSaving] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState({ email: "" });
+  const [isRegistered, setIsRegistered] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -49,15 +59,29 @@ function App() {
       });
   }, []);
 
-  function handleOpenPopup(popup) {
+  useEffect(() => {
+    if (isRegistered !== null) {
+      const infoTooltipPopup = {
+        children: <InfoTooltip isRegistered={isRegistered} />,
+        title: "",
+      };
+      handleOpenPopup(infoTooltipPopup);
+    }
+  }, [isRegistered]);
+
+  function handleOpenPopup(popupData) {
     setSaving(false);
-    setPopup(popup);
+    setPopup(popupData);
     setError(null);
   }
 
   function handleClosePopup() {
     setPopup(null);
     setError(null);
+
+    if (isRegistered !== null) {
+      setIsRegistered(null);
+    }
   }
 
   async function handleCardLike(card) {
@@ -133,9 +157,41 @@ function App() {
     })();
   };
 
+  const handleRegistration = ({ password, email }) => {
+    auth
+      .register(password, email)
+      .then(() => {
+        setIsRegistered(true);
+        navigate("/signin");
+      })
+      .catch((err) => {
+        setIsRegistered(false);
+      });
+  };
+
+  const handleLogin = ({ password, email }) => {
+    auth
+      .authorize(password, email)
+      .then((data) => {
+        if (data.jwt) {
+          setUserData(data.user);
+          setIsLoggedIn(true);
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <CurrentUserContext.Provider
-      value={{ currentUser, handleUpdateUser, onUpdateAvatar, saving }}
+      value={{
+        currentUser,
+        handleUpdateUser,
+        onUpdateAvatar,
+        saving,
+      }}
     >
       <Routes>
         <Route
@@ -144,7 +200,7 @@ function App() {
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <div className="body">
                 <div className="page">
-                  <Header />
+                  <Header userData={userData} />
                   <Main
                     onOpenPopup={handleOpenPopup}
                     onClosePopup={handleClosePopup}
@@ -167,8 +223,8 @@ function App() {
             <>
               <div className="body">
                 <div className="page">
-                  <Header />
-                  <Login />
+                  <Header userData={userData} />
+                  <Login handleLogin={handleLogin} />
                 </div>
               </div>
             </>
@@ -180,8 +236,11 @@ function App() {
             <>
               <div className="body">
                 <div className="page">
-                  <Header />
-                  <Register />
+                  <Header userData={userData} />
+                  <Register
+                    handleRegistration={handleRegistration}
+                    isRegistered={isRegistered}
+                  />
                 </div>
               </div>
             </>
@@ -198,6 +257,11 @@ function App() {
           }
         />
       </Routes>
+      {popup && (
+        <Popup onClose={handleClosePopup} title={popup.title}>
+          {popup.children}
+        </Popup>
+      )}
     </CurrentUserContext.Provider>
   );
 }
