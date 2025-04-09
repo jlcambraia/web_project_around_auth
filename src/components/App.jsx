@@ -187,7 +187,6 @@ function App() {
     auth
       .authorize(password, email)
       .then((data) => {
-        console.log(data);
         if (data.token) {
           setToken(data.token);
           setUserData(email);
