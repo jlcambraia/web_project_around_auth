@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 import avatarPlaceholder from "../images/profile__placeholder.png";
 
@@ -37,6 +43,7 @@ function App() {
   const [isRegistered, setIsRegistered] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     api
@@ -82,7 +89,6 @@ function App() {
       .then((data) => {
         setIsLoggedIn(true);
         setUserData(data.data.email);
-        navigate("/");
       })
       .catch(() => {
         setIsRegistered(false);
@@ -197,7 +203,8 @@ function App() {
           setToken(data.token);
           setUserData(email);
           setIsLoggedIn(true);
-          navigate("/");
+          const redirectPath = location.state?.from?.pathname || "/";
+          navigate(redirectPath);
         }
       })
       .catch(() => {
@@ -245,30 +252,34 @@ function App() {
         <Route
           path="/signin"
           element={
-            <>
-              <div className="body">
-                <div className="page">
-                  <Header userData={userData} title="Entrar" />
-                  <Login handleLogin={handleLogin} />
+            <ProtectedRoute isLoggedIn={isLoggedIn} anonymous>
+              <>
+                <div className="body">
+                  <div className="page">
+                    <Header userData={userData} title="Entrar" />
+                    <Login handleLogin={handleLogin} />
+                  </div>
                 </div>
-              </div>
-            </>
+              </>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/signup"
           element={
-            <>
-              <div className="body">
-                <div className="page">
-                  <Header userData={userData} title="Faça o Login" />
-                  <Register
-                    handleRegistration={handleRegistration}
-                    isRegistered={isRegistered}
-                  />
+            <ProtectedRoute isLoggedIn={isLoggedIn} anonymous>
+              <>
+                <div className="body">
+                  <div className="page">
+                    <Header userData={userData} title="Faça o Login" />
+                    <Register
+                      handleRegistration={handleRegistration}
+                      isRegistered={isRegistered}
+                    />
+                  </div>
                 </div>
-              </div>
-            </>
+              </>
+            </ProtectedRoute>
           }
         />
         <Route
