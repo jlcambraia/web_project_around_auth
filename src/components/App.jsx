@@ -20,6 +20,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import ProtectedRoute from "./ProtectedRout";
 
 import * as auth from "../utils/auth";
+import { setToken, getToken } from "../utils/token";
 
 function App() {
   const [popup, setPopup] = useState(null);
@@ -68,6 +69,19 @@ function App() {
       handleOpenPopup(infoTooltipPopup);
     }
   }, [isRegistered]);
+
+  useEffect(() => {
+    const token = getToken();
+
+    if (!token) {
+      return;
+    }
+
+    auth.getUserInfo(token).then((data) => {
+      setIsLoggedIn(true);
+      setUserData(data);
+    });
+  }, []);
 
   function handleOpenPopup(popupData) {
     setSaving(false);
@@ -173,14 +187,16 @@ function App() {
     auth
       .authorize(password, email)
       .then((data) => {
-        if (data.jwt) {
-          setUserData(data.user);
+        console.log(data);
+        if (data.token) {
+          setToken(data.token);
+          setUserData(email);
           setIsLoggedIn(true);
           navigate("/");
         }
       })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
+        setIsRegistered(false);
       });
   };
 
@@ -200,7 +216,11 @@ function App() {
             <ProtectedRoute isLoggedIn={isLoggedIn}>
               <div className="body">
                 <div className="page">
-                  <Header userData={userData} />
+                  <Header
+                    userData={userData}
+                    isLoggedIn={isLoggedIn}
+                    setIsLoggedIn={setIsLoggedIn}
+                  />
                   <Main
                     onOpenPopup={handleOpenPopup}
                     onClosePopup={handleClosePopup}
@@ -223,7 +243,7 @@ function App() {
             <>
               <div className="body">
                 <div className="page">
-                  <Header userData={userData} />
+                  <Header userData={userData} title="Entrar" />
                   <Login handleLogin={handleLogin} />
                 </div>
               </div>
@@ -236,7 +256,7 @@ function App() {
             <>
               <div className="body">
                 <div className="page">
-                  <Header userData={userData} />
+                  <Header userData={userData} title="Faça o Login" />
                   <Register
                     handleRegistration={handleRegistration}
                     isRegistered={isRegistered}
