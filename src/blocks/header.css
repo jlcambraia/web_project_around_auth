@@ -10,11 +10,21 @@
   margin-bottom: 41px;
 }
 
+.header__buttons {
+  display: flex;
+  gap: 56px;
+}
+
+.header__buttons_desktop-hidden {
+  display: none;
+}
+
 .header__button {
   margin: 0 0 32px 0;
   color: #fff;
   background-color: transparent;
   border: none;
+  padding: 0;
 }
 
 .header__button:hover {
@@ -23,12 +33,46 @@
 }
 
 .header__button_profile {
-  margin-right: 56px;
   font-weight: 500;
 }
 
 .header__button_logout {
   color: #a9a9a9;
+}
+
+.header__mobile-menu {
+  position: relative;
+  width: 100%;
+  background-color: #000;
+  overflow: hidden;
+  border-bottom: solid 1px #545454;
+  transform-origin: top;
+  margin-bottom: 25px;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.header__mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 150px;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 695px) {
+  .header__buttons {
+    gap: 16px;
+  }
 }
 
 @media screen and (max-width: 544px) {
@@ -37,8 +81,34 @@
     margin-bottom: 32px;
   }
 
+  .header__buttons_mobile-hidden {
+    display: none;
+  }
+
+  .header__buttons_desktop-hidden {
+    display: block;
+  }
+
   .header__button {
     margin-bottom: 24px;
     font-size: 14px;
+  }
+
+  .header__button-icon {
+    width: 30px;
+  }
+
+  .header__button_profile {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .header__button_logout {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .header__buttons_mobile-not-hidden {
+    display: none;
   }
 }
