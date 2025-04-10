@@ -50,10 +50,12 @@ export default function Login({ handleLogin }) {
 
     const form = evt.target;
     if (form.checkValidity()) {
-      setIsSubmitting(true);
-      handleLogin(data).finally(() => {
+      try {
+        setIsSubmitting(true);
+        handleLogin(data);
+      } finally {
         setIsSubmitting(false);
-      });
+      }
     } else {
       const emailInput = form.elements.email;
       const passwordInput = form.elements.password;
