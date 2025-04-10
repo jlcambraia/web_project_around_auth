@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import visibility from "../../../../images/visibility.svg";
+import visibilityOff from "../../../../images/visibility_off.svg";
 
 export default function Login({ handleLogin }) {
   const [data, setData] = useState({ email: "", password: "" });
@@ -9,6 +11,7 @@ export default function Login({ handleLogin }) {
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleEmailChange = (evt) => {
     const input = evt.target;
@@ -67,6 +70,10 @@ export default function Login({ handleLogin }) {
     }
   };
 
+  function toggleShowPassword() {
+    setIsPasswordVisible(!isPasswordVisible);
+  }
+
   return (
     <div className="login">
       <h2 className="login__title">Entrar</h2>
@@ -74,9 +81,7 @@ export default function Login({ handleLogin }) {
         <div className="login__input-wrapper">
           <input
             name="email"
-            className={`login__input login__input_margin_s ${
-              errors.email ? "login__input_type_error" : ""
-            }`}
+            className="login__input login__input_margin_s"
             type="email"
             placeholder="E-mail"
             required
@@ -94,11 +99,10 @@ export default function Login({ handleLogin }) {
         </div>
         <div className="login__input-wrapper">
           <input
+            id="login-password"
             name="password"
-            className={`login__input login__input_margin_l ${
-              errors.password ? "login__input_type_error" : ""
-            }`}
-            type="password"
+            className="login__input login__input_margin_l"
+            type={isPasswordVisible ? "text" : "password"}
             placeholder="Senha"
             required
             minLength="8"
@@ -106,6 +110,14 @@ export default function Login({ handleLogin }) {
             onChange={handlePasswordChange}
             autoComplete="current-password"
           />
+          <span className="login__input-visibility-button">
+            <img
+              className="login__input-visibility-icon"
+              src={isPasswordVisible ? visibility : visibilityOff}
+              alt="Ícone para mostrar ou esconder password"
+              onClick={toggleShowPassword}
+            />
+          </span>
           <span
             className={`login__input-error login__input-error_positioned-top ${
               errors.password ? "" : "login__input-error_hidden"
