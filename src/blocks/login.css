@@ -45,7 +45,7 @@
 
 .login__input-error {
   font-size: 12px;
-  color: #fff;
+  color: #a9a9a9;
   position: absolute;
   top: 65%;
   left: 5px;
@@ -55,7 +55,7 @@
 
 .login__input-error_positioned-top {
   font-size: 12px;
-  color: #fff;
+  color: #a9a9a9;
   position: absolute;
   top: 17%;
   left: 5px;
