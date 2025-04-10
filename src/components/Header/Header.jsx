@@ -11,6 +11,14 @@ export default function Header({ isLoggedIn, setIsLoggedIn, title, userData }) {
     setIsLoggedIn(false);
   }
 
+  function buttonNavigate() {
+    const headerButton = document.querySelector(".header__button");
+    if (headerButton.textContent == "Entrar") {
+      return navigate("/signup");
+    }
+    return navigate("/signin");
+  }
+
   return (
     <header className="header">
       <img
@@ -31,7 +39,9 @@ export default function Header({ isLoggedIn, setIsLoggedIn, title, userData }) {
           </button>
         </div>
       ) : (
-        <button className="header__button">{title}</button>
+        <button className="header__button" onClick={buttonNavigate}>
+          {title}
+        </button>
       )}
     </header>
   );
