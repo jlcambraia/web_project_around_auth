@@ -50,10 +50,12 @@ export default function Register({ handleRegistration }) {
 
     const form = evt.target;
     if (form.checkValidity()) {
-      setIsSubmitting(true);
-      handleRegistration(data).finally(() => {
+      try {
+        setIsSubmitting(true);
+        handleRegistration(data);
+      } finally {
         setIsSubmitting(false);
-      });
+      }
     } else {
       const emailInput = form.elements.email;
       const passwordInput = form.elements.password;
