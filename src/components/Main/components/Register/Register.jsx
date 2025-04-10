@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import visibility from "../../../../images/visibility.svg";
+import visibilityOff from "../../../../images/visibility_off.svg";
 
 export default function Register({ handleRegistration }) {
   const [data, setData] = useState({ email: "", password: "" });
@@ -9,6 +11,7 @@ export default function Register({ handleRegistration }) {
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleEmailChange = (evt) => {
     const input = evt.target;
@@ -67,6 +70,10 @@ export default function Register({ handleRegistration }) {
     }
   };
 
+  function toggleShowPassword() {
+    setIsPasswordVisible(!isPasswordVisible);
+  }
+
   return (
     <div className="register">
       <h2 className="register__title">Inscrever-se</h2>
@@ -82,6 +89,7 @@ export default function Register({ handleRegistration }) {
             required
             value={data.email}
             onChange={handleEmailChange}
+            autoComplete="username"
           />
           <span
             className={`register__input-error ${
@@ -93,23 +101,27 @@ export default function Register({ handleRegistration }) {
         </div>
         <div className="register__input-wrapper">
           <input
+            id="register-password"
             name="password"
-            className={`register__input register__input_margin_l ${
-              errors.password ? "register__input_type_error" : ""
-            }`}
-            type="password"
+            className="register__input register__input_margin_l"
+            type={isPasswordVisible ? "text" : "password"}
             placeholder="Senha"
             required
             minLength="8"
             maxLength="30"
             value={data.password}
             onChange={handlePasswordChange}
+            autoComplete="current-password"
           />
-          <span
-            className={`register__input-error register__input-error_positioned-top ${
-              errors.password ? "" : "register__input-error_hidden"
-            }`}
-          >
+          <span className="register__input-visibility-button">
+            <img
+              className="register__input-visibility-icon"
+              src={isPasswordVisible ? visibility : visibilityOff}
+              alt="Ícone para mostrar ou esconder password"
+              onClick={toggleShowPassword}
+            />
+          </span>
+          <span className="register__input-error register__input-error_positioned-top">
             {errors.password}
           </span>
         </div>
