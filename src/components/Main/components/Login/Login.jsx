@@ -82,6 +82,7 @@ export default function Login({ handleLogin }) {
             required
             value={data.email}
             onChange={handleEmailChange}
+            autoComplete="username"
           />
           <span
             className={`login__input-error ${
@@ -103,6 +104,7 @@ export default function Login({ handleLogin }) {
             minLength="8"
             value={data.password}
             onChange={handlePasswordChange}
+            autoComplete="current-password"
           />
           <span
             className={`login__input-error login__input-error_positioned-top ${
