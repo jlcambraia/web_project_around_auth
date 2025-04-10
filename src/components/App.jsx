@@ -190,7 +190,7 @@ function App() {
         setIsRegistered(true);
         navigate("/signin");
       })
-      .catch((err) => {
+      .catch(() => {
         setIsRegistered(false);
       });
   };
