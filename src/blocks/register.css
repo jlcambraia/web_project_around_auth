@@ -49,6 +49,10 @@
   right: 1%;
 }
 
+.register__input-visibility-button:hover {
+  cursor: pointer;
+}
+
 .register__input-visibility-icon {
   width: 16px;
 }
