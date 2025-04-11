@@ -49,6 +49,10 @@
   right: 1%;
 }
 
+.login__input-visibility-button:hover {
+  cursor: pointer;
+}
+
 .login__input-visibility-icon {
   width: 16px;
 }
