@@ -6,7 +6,7 @@ export default function ProtectedRoute({
   anonymous = false,
 }) {
   const location = useLocation();
-  const from = location.state?.from || "/web_project_around_auth";
+  const from = location.state?.from || "/";
 
   if (anonymous && isLoggedIn) {
     return <Navigate to={from} />;
