@@ -203,8 +203,7 @@ function App() {
           setToken(data.token);
           setUserData(email);
           setIsLoggedIn(true);
-          const redirectPath =
-            location.state?.from?.pathname || "/web_project_around_auth";
+          const redirectPath = location.state?.from?.pathname || "/";
           navigate(redirectPath);
         }
       })
@@ -287,7 +286,7 @@ function App() {
           path="*"
           element={
             isLoggedIn ? (
-              <Navigate to="/web_project_around_auth" replace />
+              <Navigate to="/" replace />
             ) : (
               <Navigate to="/signin" replace />
             )
