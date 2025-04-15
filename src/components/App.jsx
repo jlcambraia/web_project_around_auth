@@ -203,7 +203,8 @@ function App() {
           setToken(data.token);
           setUserData(email);
           setIsLoggedIn(true);
-          const redirectPath = location.state?.from?.pathname || "/";
+          const redirectPath =
+            location.state?.from?.pathname || "/web_project_around_auth";
           navigate(redirectPath);
         }
       })
