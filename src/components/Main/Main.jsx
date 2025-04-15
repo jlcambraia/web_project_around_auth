@@ -4,7 +4,6 @@ import avatarIcon from "../../images/profile__icon.png";
 import editIcon from "../../images/edit__icon.svg";
 import addIcon from "../../images/add__icon.svg";
 
-import Popup from "./components/Popup/Popup";
 import EditProfile from "./components/Popup/components/EditProfile/EditProfile";
 import NewCard from "./components/Popup/components/NewCard/NewCard";
 import EditAvatar from "./components/Popup/components/EditAvatar/EditAvatar";
@@ -17,8 +16,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 export default function Main(props) {
   const {
     onOpenPopup,
-    onClosePopup,
-    popup,
     cards,
     onCardLike,
     onCardDelete,
