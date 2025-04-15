@@ -120,11 +120,6 @@ export default function Main(props) {
           </ul>
         )}
       </section>
-      {popup && (
-        <Popup onClose={onClosePopup} title={popup.title}>
-          {popup.children}
-        </Popup>
-      )}
     </main>
   );
 }
