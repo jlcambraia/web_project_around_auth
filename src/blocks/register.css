@@ -95,6 +95,13 @@
   opacity: 85%;
 }
 
+.register__button_disabled {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: not-allowed;
+}
+
 .register__sign-up-text {
   text-align: center;
   font-size: 14px;
@@ -119,6 +126,10 @@
 
   .register__input_margin_l {
     margin-bottom: 173px;
+  }
+
+  .register__input-error_positioned-top {
+    top: 20%;
   }
 
   .register__button {
