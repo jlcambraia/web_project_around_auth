@@ -136,10 +136,12 @@
     font-size: 16px;
     margin-bottom: 20px;
     color: #000;
+    height: 47px;
   }
 
   .login__button_disabled {
     color: #c4c4c4;
+    height: 47px;
   }
 
   .login__sign-up-text {
