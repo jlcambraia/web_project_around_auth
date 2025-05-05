@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 544px) {
   .infotooltip__card {
-    width: 75%;
+    width: 90%;
     height: 308px;
     padding: 50px 18px;
   }
