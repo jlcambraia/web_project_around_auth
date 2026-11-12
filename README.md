@@ -1,57 +1,138 @@
-# Tripleten web_project_around_auth
+# Around the U.S. — React Application
 
-## Nome do Projeto:
+A responsive photo-sharing application built with **React and Vite**, featuring user authentication, protected routes, and REST API integration.
 
-Around the U.S.
+**[Live Demo](https://jlcambraia.github.io/web_project_around_auth/)**
 
-## Link para o GitHub Pages:
+## Overview
 
-O site está disponível no GitHub Pages: [Clique aqui para acessar](https://jlcambraia.github.io/web_project_around_auth/)
+Around the U.S. is an interactive photo-sharing application demonstrating component-based frontend development, client-side routing, authentication workflows, and communication with external APIs.
 
-## Descrição do Projeto:
+Developed as part of the **TripleTen Full Stack Web Development program**.
 
-O website "Around the U.S." é uma plataforma interativa que visa explorar e celebrar as diversas culturas, paisagens e histórias dos Estados Unidos. O projeto proporciona aos visitantes uma experiência imersiva, permitindo que compartilhem suas experiências, fotos e histórias relacionadas a diferentes regiões do país. O site apresenta uma interface amigável que incentiva a interação e a colaboração entre os usuários, transformando cada visita em uma jornada de descoberta cultural.
+## Features
 
-## Tecnologias e Técnicas utilizadas:
+- User registration and login
+- Authentication-aware navigation
+- Protected routes
+- User profile interface
+- Photo-sharing interface
+- REST API integration
+- Authentication token storage
+- Interactive feedback components
+- Responsive layouts for desktop and mobile
 
-1. **React e JSX:** Criação de interfaces dinâmicas e intuitivas com componentes reutilizáveis.
+## Tech Stack
 
-2. **React Router:** Implementação de rotas protegidas e redirecionamento de usuários não autorizados.
+- React 19
+- Vite 6
+- JavaScript (ES6+)
+- React Router 7
+- HTML5 and CSS3
+- React Hooks
+- REST APIs
+- GitHub Pages
 
-3. **Autenticação de Usuário:** Registro, login e controle de acesso com armazenamento de token via `localStorage`.
+## Application Structure
 
-4. **Componentes Personalizados:** Criação dos componentes `Login`, `Register`, `ProtectedRoute` e `InfoTooltip` para melhorar a usabilidade e segurança.
+The application uses reusable React components to organize its interface and authentication flow.
 
-5. **Integração com API:** Comunicação com servidor para autenticação e manipulação de dados em tempo real.
+Key components documented in the project include:
 
-6. **Gerenciamento de Estado com Hooks:** Uso de `useState` e `useEffect` para reatividade e controle de fluxo da aplicação.
+- `Login` — user sign-in interface
+- `Register` — account registration interface
+- `ProtectedRoute` — access control for authenticated pages
+- `InfoTooltip` — feedback for user interactions
 
-7. **CSS Modularizado:** Estilos encapsulados para evitar conflitos entre classes.
+React Hooks manage component state and application behavior.
 
-8. **Responsividade:** Layout adaptado para diferentes dispositivos, incluindo versão mobile.
+## Authentication Flow
 
-9. **SEO:** Boas práticas de otimização para motores de busca.
+```text
+User Registration / Login
+           |
+           v
+  Authentication Request
+           |
+           v
+       Token Storage
+           |
+           v
+      Protected Routes
+           |
+           v
+    Application Content
+```
 
-## Planos de Melhoria:
+Authentication state is used to control access to protected areas of the application.
 
-1. **Melhoria na Identidade Visual**
+## Getting Started
 
-   - Adicionar elementos gráficos que representem visualmente as culturas e regiões dos EUA, como ícones temáticos, bandeiras estaduais, e mapas interativos.
-   - Incluir tipografia personalizada e aprimorar o layout para fortalecer a identidade da marca.
+### Prerequisites
 
-2. **Facilitar o Compartilhamento em Redes Sociais**
+- Node.js
+- npm
 
-   - Integrar botões de compartilhamento direto para redes sociais como Facebook, X (Twitter), Instagram e WhatsApp.
-   - Gerar links únicos e imagens de pré-visualização ao compartilhar histórias ou postagens.
-   - Adicionar um recurso de "Copiar link" para facilitar o envio manual.
+### Installation
 
-3. **Adicionar Suporte a Múltiplos Idiomas**
+```bash
+git clone https://github.com/jlcambraia/web_project_around_auth.git
+cd web_project_around_auth
+npm install
+```
 
-   - Implementar internacionalização com suporte inicial para português e inglês.
-   - Adicionar um seletor de idioma acessível no cabeçalho.
-   - Armazenar a preferência de idioma do usuário no localStorage.
+### Development
 
-4. **Performance e Otimização**
-   - Otimizar carregamento de imagens e uso de lazy loading.
-   - Minificar arquivos CSS/JS e reduzir requisições HTTP.
-   - Aplicar cache local para conteúdos estáticos e uso de CDN quando possível.
+```bash
+npm run dev
+```
+
+Open the local URL displayed by Vite.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+### Preview
+
+```bash
+npm run preview
+```
+
+### Deployment
+
+The project includes a GitHub Pages deployment script:
+
+```bash
+npm run deploy
+```
+
+API connectivity depends on the application's configured backend endpoints.
+
+## Learning Outcomes
+
+This project provided practical experience with:
+
+- React component architecture
+- Client-side routing
+- Authentication workflows
+- Protected navigation
+- Asynchronous API requests
+- State management with React Hooks
+- Responsive frontend development
+
+## Potential Improvements
+
+- Expanded automated testing
+- Accessibility enhancements
+- Internationalization
+- Improved image loading performance
+- Social sharing functionality
+
+## Author
+
+**João Luiz Cambraia**
+
+[GitHub](https://github.com/jlcambraia) · [LinkedIn](https://www.linkedin.com/in/joaoluizcambraia/)
